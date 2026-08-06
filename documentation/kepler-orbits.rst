@@ -86,7 +86,7 @@ which always measures positions from the Solar System barycenter.
 
     # Generating a position.
 
-    from skyfield.constants import GM_SUN_Pitjeva_2005_km3_s2 as GM_SUN
+    from skyfield.constants import GM_SUN_DE440_km3_s2 as GM_SUN
 
     ts = load.timescale()
     eph = load('de421.bsp')
