@@ -1,3 +1,8 @@
+# Fix "AttributeError: module '_tkinter' has no attribute '__file__'"
+import matplotlib
+matplotlib.use('Agg')
+
+# Then, we can proceed with our normal imports.
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.collections import LineCollection
@@ -38,16 +43,14 @@ comet = sun + mpc.comet_orbit(row, ts, GM_SUN)
 with load.open(hipparcos.URL) as f:
     stars = hipparcos.load_dataframe(f)
 
-# And the constellation outlines come from Stellarium.  We make a list
-# of the stars at which each edge stars, and the star at which each edge
-# ends.
+# The constellation outlines come from Stellarium.
 
 url = ('https://raw.githubusercontent.com/Stellarium/stellarium/'
-       'eb47095a9282cf6b981f6e37fe1ea3a3ae0fd167'
-       '/skycultures/modern_st/constellationship.fab')
+       '2b10b1a3bb534eb4e7586751054bf67b36c22e53'
+       '/skycultures/modern_st/index.json')
 
-with load.open(url) as f:
-    constellations = stellarium.parse_constellations(f)
+with load.open(url, filename='modern_st_index.json') as f:
+    constellations = stellarium.parse_constellations_json(f)
 
 edges = [edge for name, edges in constellations for edge in edges]
 edges_star1 = [star1 for star1, star2 in edges]
