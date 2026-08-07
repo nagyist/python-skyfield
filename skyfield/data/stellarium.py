@@ -6,7 +6,7 @@ from collections import namedtuple
 StarName = namedtuple('StarName', 'hip name')
 
 def parse_constellations(lines):
-    """Parse an old-fashioned `constellationship.fab` file.
+    """Parse an old-fashioned ``constellationship.fab`` file.
 
     Stellarium has deprecated this file format.  See the docstring of
     the next function for the structure of the return value.
@@ -27,7 +27,7 @@ def parse_constellations(lines):
     return constellations
 
 def parse_constellations_json(lines):
-    """Parse constellations in Stellarium `/skycultures/modern_st/index.json`.
+    """Parse Stellarium ``/skycultures/modern_st/index.json`` constellations.
 
     The return value is a Python list of tuples, each giving a 3-letter
     constellation abbreviation and a list of line segments to be drawn

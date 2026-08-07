@@ -9,6 +9,39 @@ Changelog
 Released versions
 -----------------
 
+v1.55 — 2026 August 7
+---------------------
+
+* The Stellarium project has adopted a new file format
+  for storing constellation lines,
+  so Skyfield has gained a new function
+  :func:`~skyfield.data.stellarium.parse_constellations_json()`
+  and the example script :ref:`neowise-chart` in Skyfield’s documentation
+  has been updated to use it.
+
+* A new *GM*\ :sub:`☉` constant is available for use with Kepler orbits.
+  It’s named ``GM_SUN_DE440_km3_s2``
+  and uses the value published with the DE440 ephemeris.
+  The difference between it and the older constant
+  ``GM_SUN_Pitjeva_2005_km3_s2`` is probably too small
+  to make any practical difference —
+  they differ by a proportion of only about 5.4×10\ :sup:`−12` —
+  but because the newer constant’s name is easier to read and type,
+  the Kepler documentation has been tweaked to use it instead.
+
+* Fix: if
+  :func:`~skyfield.almanac.find_risings()` or
+  :func:`~skyfield.almanac.find_settings()`
+  converged too quickly on the exact time of rising or setting,
+  then they would print a
+  ``RuntimeWarning: invalid value encountered in divide``
+  and return a NaN value instead of a time.
+  `#1140 <https://github.com/skyfielders/python-skyfield/issues/1140>`_
+
+* Skyfield’s refraction logic
+  should no longer trigger the recent NumPy ``FutureWarning``
+  about the changes that NumPy is planning to make to ``np.bool``.
+
 v1.54 — 2026 January 18
 -----------------------
 
